@@ -7,11 +7,14 @@ from telegram.ext import Application, CommandHandler, MessageHandler, CallbackQu
 # 🔴 توکن بات تلگرام
 BOT_TOKEN = "8348439329:AAHAgXHamWVOOk26z_rLeRjvkL_PY56_Ovk"
 
-# 📢 شناسه کانال برای ارسال آگهی (مثال: @your_channel یا -1001234567890)
-CHANNEL_ID = "https://t.me/shap_SquidGame"  # این را با شناسه کانال خود جایگزین کنید
+# 📢 شناسه کانال برای ارسال آگهی
+CHANNEL_ID = "@shap_SquidGame"  # شناسه کانال
 
-# 📢 شناسه کانال برای ارسال آگهی (مثال: @your_channel یا -1001234567890)
-CHANNEL_ID = "https://t.me/shap_SquidGame"  # این را با شناسه کانال خود جایگزین کنید
+# 👤 ایدی ادمین
+ADMIN_ID = "@ID_Haj_Moian"  # ایدی ادمین
+
+# 🔗 لینک کانال
+CHANNEL_LINK = "https://t.me/shap_SquidGame"  # لینک کانال
 
 # 📸 URL عکس تبلیغاتی - می‌توانید این را با آدرس عکس خودتان جایگزین کنید
 AD_IMAGE_URL = "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800"  # مثال - جایگزین کنید
@@ -119,6 +122,9 @@ def create_ad_text(context_data):
 👤 **فروشنده:** {context_data.get('seller_id', 'نامشخص')}
 
 ━━━━━━━━━━━━━━━━━━━━
+👤 **ادمین:** {ADMIN_ID}
+📢 **کانال:** {CHANNEL_LINK}
+
 #فروش_اکانت #کالاف_دیوتی #اکانت_کالاف"""
     
     return ad_text
@@ -245,7 +251,7 @@ async def message_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
         
         await update.message.reply_text(
             f"✅ نوع لینک شدن شما: **{message_text}**\n\n"
-            "💎 **تعداد CP (Credit Points) اکانت خود را وارد کنید:**",
+            "💎 **تعداد CP اکانت خود را وارد کنید:**",
             reply_markup=create_back_keyboard(),
             parse_mode="Markdown"
         )
@@ -517,7 +523,7 @@ async def region_callback_handler(update: Update, context: ContextTypes.DEFAULT_
     # ارسال پیام درخواست نوع لینک شدن
     await query.message.reply_text(
         "🔗 **نوع لینک شدن اکانت خود را وارد کنید...**\n\n"
-        "مثال: گوگل پلی، اپل آیدی، گیم سنتر و ...",
+        "مثال: گوگل پلی، اپل آیدی، اکتیویژن و ...",
         reply_markup=create_back_keyboard(),
         parse_mode="Markdown"
     )
